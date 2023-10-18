@@ -1,0 +1,20 @@
+version: '3'
+services:
+  # web:
+  #   build: ./docker/web
+  #   ports:
+  #     - "80:80"
+  #   working_dir: /var/www/html
+  #   volumes:
+  #     - ./docker/web/src:/var/www/html
+  #   command: ["apache2ctl", "-D", "FOREGROUND"]
+
+  nginx:
+    container_name: nginx
+    build: ./docker/nginx
+    ports:
+      - "81:80"
+    working_dir: /usr/share/nginx/html
+    volumes:
+      - ./docker/nginx/src:/usr/share/nginx/html
+    command: ["nginx", "-g", "daemon off;"]
